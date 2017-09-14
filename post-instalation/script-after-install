@@ -17,8 +17,8 @@ sudo apt-get -y install \
      gimp inkscape vlc mpv audacious audacity i3lock i3blocks rofi htop \
      gdebi unrar-free unzip wget gnupg2 autocutsel xclip sqlitebrowser\
      libreoffice-style-tango libreoffice-gtk libreoffice-gtk3\
-     scrot nitrogen \
-     toilet cowsay cmatrix screenfetch\
+     maim slop feh sxiv\
+     toilet cowsay cmatrix neofetch\
      arc-theme fonts-inconsolata xfonts-terminus ttf-mscorefonts-installer
 
 
