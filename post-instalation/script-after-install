@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Keep Debian up to date
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
+sudo apt-get -y autoremove
+
+sudo apt-get -y install \
+     dkms build-essential linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
+     git gitk git-cola subversion php openjdk-8-jdk sbcl \
+     apache2 libgtk-3-dev ruby-dev\
+     ikiwiki encfs gparted dunst unclutter curl  p7zip p7zip-full p7zip-rar gnupg pass\
+     arandr spacefm gramps markdown pandoc phpmyadmin gpick stow hexchat \
+     k3b kazam kdenlive mat bleachbit qalculate borgbackup ncdu qpdfview\
+     emacs geany okular korganizer synaptic mc rxvt-unicode-256color dia freeplane\
+     gimp inkscape vlc mpv audacious audacity i3lock i3blocks rofi htop \
+     gdebi unrar-free unzip wget gnupg2 autocutsel xclip sqlitebrowser\
+     libreoffice-style-tango libreoffice-gtk libreoffice-gtk3\
+     scrot nitrogen \
+     toilet cowsay cmatrix screenfetch\
+     arc-theme fonts-inconsolata xfonts-terminus ttf-mscorefonts-installer
+
+
+echo "do you have strong internet connection and bandwith?"
+read -r -p "Are you sure? [y/N] " response
+case "$response" in
+    [yY][eE][sS]|[yY]) 
+        sudo apt-get install virtualbox virtualbox-guest-additions-iso netbeans \
+            texlive ;; 
+    *)
+        exit 0 ;;
+esac
+
+
+     
+
+    
+
+
+
