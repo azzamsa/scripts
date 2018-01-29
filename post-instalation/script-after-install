@@ -18,6 +18,7 @@ sudo apt-get -y install \
      gdebi unrar-free unzip wget gnupg2 autocutsel xclip sqlitebrowser\
      libreoffice-style-tango libreoffice-gtk libreoffice-gtk3\
      maim slop feh sxiv\
+     syncthing qemu-kvm  \
      toilet cowsay cmatrix neofetch\
      arc-theme fonts-inconsolata xfonts-terminus ttf-mscorefonts-installer
 
@@ -25,17 +26,11 @@ sudo apt-get -y install \
 echo "do you have strong internet connection and bandwith?"
 read -r -p "Are you sure? [y/N] " response
 case "$response" in
-    [yY][eE][sS]|[yY]) 
+    [yY][eE][sS]|[yY])
         sudo apt-get install virtualbox virtualbox-guest-additions-iso netbeans \
-            texlive ;; 
+            texlive ;;
     *)
         exit 0 ;;
 esac
 
-
-     
-
-    
-
-
-
+# todo, removing virtual box and others supplies, spesific text live, automate qemu.
