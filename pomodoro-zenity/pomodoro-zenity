@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # round 1
 sleep 1500 && aplay ~/.emacs.d/elisp/pomodoro/wind-chime-rest.wav && zenity --warning --text="break time"
