@@ -7,7 +7,7 @@ img_name=$(yad \
 --width=200 \
 --form \
 --field="Name" \
---button="Save:1" \
+--button="Save" \
 --center)
 
 # using bash subtring to remove '|' character from yad input
