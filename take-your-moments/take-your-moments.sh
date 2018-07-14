@@ -10,5 +10,7 @@ img_name=$(yad \
 --button="Save" \
 --center)
 
+# replace whitespace to dash
+rplc_space=${img_name// /-}
 # using bash subtring to remove '|' character from yad input
-exec maim $HOME/moments/${img_name:0:-1}_$(date +%F-%H:%M).png
+exec maim $HOME/Pictures/moments/${rplc_space:0:-1}_$(date +%F-%H:%M).png
