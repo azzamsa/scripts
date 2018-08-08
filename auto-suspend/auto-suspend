@@ -16,14 +16,14 @@ notify-user() {
 
     sudo -u $user DISPLAY=$display \
          DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus \
-         notify-send -u critical -t 4000 "local battery warning" "\n$user, your battery is low"
+         notify-send -u critical -t 4000 "battery warning" "\n$user, your battery is low"
 }
 
 acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
     read -r status capacity
 
     if [ "$status" = Discharging ]; then
-        if [ "$capacity" -lt 20 ]; then
+        if [ "$capacity" -lt 10 ]; then
             notify-user
         elif [ "$capacity" -lt 4 ]; then
             lock && systemctl hibernate
