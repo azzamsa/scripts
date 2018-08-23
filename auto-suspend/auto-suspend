@@ -5,28 +5,27 @@ lock() {
 }
 
 notify-user() {
-    #Detect the name of the display in use
-    local display=":$(ls /tmp/.X11-unix/* | sed 's#/tmp/.X11-unix/X##' | head -n 1)"
-
     #Detect the user using such display
     local user=$(whoami)
 
-    #Detect the id of the user
-    local uid=$(id -u $user)
-
-    sudo -u $user DISPLAY=$display \
-         DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus \
-         notify-send -u critical -t 4000 "battery warning" "\n$user, your battery is low"
+    notify-send -u critical -t 4000 "battery warning" "\n$user, your battery is low"
 }
 
-acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
-    read -r status capacity
+main(){
+    acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
+        read -r status capacity
 
-    if [ "$status" = Discharging ]; then
-        if [ "$capacity" -lt 10 ] && [ "$capacity" -gt 5 ]; then
-            notify-user & aplay -q ~/sounds/marimbach-low-bat.wav
-        elif [ "$capacity" -lt 5 ]; then
-            lock && systemctl hibernate
+        if [ "$status" = Discharging ]; then
+            if [ "$capacity" -lt 10 ] && [ "$capacity" -gt 5 ]; then
+                notify-user & aplay -q ~/sounds/marimbach-low-bat.wav
+            elif [ "$capacity" -lt 5 ]; then
+                lock && systemctl hibernate
+            fi
         fi
-    fi
+    }
 }
+
+while true; do
+    main
+    sleep 180
+done
