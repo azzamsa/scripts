@@ -7,30 +7,23 @@ Collection of my daily script
 
 auto suspend window manager
 
-This will check your current battery precentage using cron job.
-When the battery in critical level, it will hibernate your machine
+This will check  your current battery precentage, When  the battery in
+critical level, it will hibernate your machine
 
 Before the critical state, `auto-suspend` will give you fancy warning.
 
 ![bat-warn](https://user-images.githubusercontent.com/17734314/43842245-1f5f7104-9b4f-11e8-841d-df3111016ae0.png)
 
 Grab `auto-suspend` script, make it executable, put in your PATH.
-Then add to your cron job
+Then start it when you login. I do this on i3wm:
 
 ``` bash
-*/3 * * * * /bin/bash /your/path/to/auto-suspend
+exec --no-startup-id auto-suspend
 
 ```
 
-If your cron doesn't work. Try adding this value to the cron file
-
-``` bash
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-```
-
-The default value to hibernate your machine is 4%, but you can modify
-as you wish.
+The default value to hibernate your machine is 4%, and the check
+interval is 3 second, but you can modify as you wish.
 
 I use [dunst](https://github.com/dunst-project/dunst) to create that
 fancy notification with this [config](https://github.com/Kaligule/dunst-config/blob/master/dunstrc)
