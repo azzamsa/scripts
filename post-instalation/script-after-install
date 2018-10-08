@@ -6,31 +6,86 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 sudo apt-get -y autoremove
 
+# install main package
 sudo apt-get -y install \
      dkms build-essential linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
-     git gitk git-cola subversion php openjdk-8-jdk sbcl \
-     apache2 libgtk-3-dev ruby-dev\
-     ikiwiki encfs gparted dunst unclutter curl  p7zip p7zip-full unar gnupg pass\
-     arandr spacefm gramps markdown pandoc phpmyadmin gpick stow hexchat \
-     k3b kazam kdenlive mat bleachbit qalculate borgbackup ncdu qpdfview\
-     emacs geany okular korganizer synaptic mc rxvt-unicode-256color dia freeplane\
-     gimp inkscape vlc mpv audacious audacity i3lock i3blocks rofi htop \
-     gdebi unrar-free unzip wget gnupg2 autocutsel xclip sqlitebrowser\
-     libreoffice-style-tango libreoffice-gtk libreoffice-gtk3\
-     maim slop feh sxiv\
-     syncthing qemu-kvm  \
-     toilet cowsay cmatrix neofetch\
-     arc-theme fonts-inconsolata xfonts-terminus ttf-mscorefonts-installer
+     gdebi unrar-free unzip wget gnupg2 autocutsel xclip sqlitebrowser \
+     libgtk-3-dev encfs gparted curl p7zip p7zip-full unar gnupg \
+     arandr emacs geany okular synaptic  rxvt-unicode-256color dia freeplane \
+     syncthing qemu-kvm \
+     gimp inkscape gramps
+
+# tools
+sudo apt-get -y install \
+     stow \
+     maim slop feh sxiv \
+     ikiwiki pandoc \
+     borgbackup ncdu htop mat bleachbit
+
+# office
+sudo apt-get -y install \
+     libreoffice libreoffice-style-tango libreoffice-gtk libreoffice-gtk3 \
+     qalculate
+
+# multimedia
+sudo apt-get -y install \
+     vlc mpv audacity  \
+     k3b kazam kdenlive
+
+# wm related
+sudo apt-get -y install \
+     i3lock i3blocks rofi light thunar dunst network-manager dunst unclutter \
+     light
+
+# install font
+sudo apt-get -y install \
+     fonts-inconsolata xfonts-terminus ttf-mscorefonts-installer
+
+# install theme
+sudo apt-get -y install \
+     arc-theme
+
+# install programming languages env
+sudo apt-get -y install \
+     apache2 git gitk subversion php openjdk-8-jdk sbcl \
+     ruby-dev \
+     curl https://sh.rustup.rs -sSf | sh
+
+# setup rust
+## other package already in init.el
+cargo install rustfmt racer
+
+# programming tools
+sudo apt-get -y install \
+     python3-pip virtualenvwrapper
+
+# setup python
+mkvirtualenv --python=/usr/bin/python2 global_py2
+workon global_py2
+pip install jedi flake8 autopep8
+mkvirtualenv --python=/usr/bin/python3 global_py3
+workon global_py3
+pip install jedi flake8 autopep8
 
 
-echo "do you have strong internet connection and bandwith?"
-read -r -p "Are you sure? [y/N] " response
-case "$response" in
-    [yY][eE][sS]|[yY])
-        sudo apt-get install virtualbox virtualbox-guest-additions-iso netbeans \
-            texlive ;;
-    *)
-        exit 0 ;;
-esac
+# setup dotfiles
+cd $HOME
+git clone https://github.com/azzamsa/dotfiles
+cd dotfiles
+for d in */ ; do
+    stow "$d"
+done
 
-# todo, removing virtual box and others supplies, spesific text live, automate qemu.
+# setup wifi
+## https://askubuntu.com/questions/717685/realtek-rtl8723be-doesnt-have-good-reception
+cd $HOME
+mkdir wifi_temp
+cd wifi_temp
+git clone https://github.com/lwfinger/rtlwifi_new
+cd rtlwifi_new
+make
+sudo make install
+
+
+# install fun
+sudo apt-get -y install toilet cowsay cmatrix neofetch
