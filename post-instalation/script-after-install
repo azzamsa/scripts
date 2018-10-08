@@ -20,7 +20,9 @@ sudo apt-get -y install \
      stow \
      maim slop feh sxiv \
      ikiwiki pandoc \
-     borgbackup ncdu htop mat bleachbit
+     pngcrush \
+     borgbackup ncdu htop mat bleachbit etckeeper \
+     mycli file-roller\
 
 # office
 sudo apt-get -y install \
@@ -35,7 +37,7 @@ sudo apt-get -y install \
 # wm related
 sudo apt-get -y install \
      i3lock i3blocks rofi light thunar dunst network-manager dunst unclutter \
-     light
+     light network-manager-gnome
 
 # install font
 sudo apt-get -y install \
@@ -86,6 +88,9 @@ cd rtlwifi_new
 make
 sudo make install
 
-
 # install fun
 sudo apt-get -y install toilet cowsay cmatrix neofetch
+
+# TODO debeaver firefox tor texlive
+
+echo "Setup finished"
