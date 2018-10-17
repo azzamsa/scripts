@@ -11,7 +11,7 @@ sudo apt-get -y install \
      dkms build-essential linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
      gdebi unrar-free unzip wget gnupg2 autocutsel xclip sqlitebrowser \
      libgtk-3-dev encfs gparted curl p7zip p7zip-full unar gnupg \
-     arandr emacs geany okular synaptic  rxvt-unicode-256color dia freeplane \
+     arandr emacs geany synaptic  rxvt-unicode-256color dia freeplane \
      syncthing qemu-kvm \
      gimp inkscape gramps
 
@@ -27,7 +27,7 @@ sudo apt-get -y install \
 # office
 sudo apt-get -y install \
      libreoffice libreoffice-style-tango libreoffice-gtk libreoffice-gtk3 \
-     qalculate
+     qalculate okular evince
 
 # multimedia
 sudo apt-get -y install \
