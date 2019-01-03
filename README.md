@@ -46,13 +46,14 @@ TODO automatically read file name and move to spesific dir
 ## Read Book Warning
 
 `read-book` warning will show your current book that you have to
-finish. Instead of wasting time surfing the internet
+finish. Instead of wasting time surfing the internet.
 
-You can use any browser extension to redirect you to custom link when
-you open up a new tab.
+You can customize `userChrome.xml` in `.mozilla/firefox/yourffprofile.default/chrome`
+to load custom js script and make 'new tab' [point to local file](read-book/chrome/NewTab_custom-page.uc.js).
+Take a look at [my chrome directory](read-book/chrome/). Move 'chrome' directory to your local firefox profile. If you 
+already have some customization, then copy those code into your own files.
+See [Luke Baker's guide](https://luke-baker.github.io/#introduction) for more complete information. Thanks Luke Baker.
 
-I use [newtaboverride](https://github.com/cadeyrn/newtaboverride) for
-the extension, and [rawgit](http://rawgit.com/) for the target link.
 
 ![read-book-warn](https://user-images.githubusercontent.com/17734314/43842272-2f8d9326-9b4f-11e8-9251-f2be1ff00408.png)
 

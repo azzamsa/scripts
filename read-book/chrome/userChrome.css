@@ -1,0 +1,11 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+
+/* Thanks Haggai Nuchi */
+/*
+   Original binding was on the List All Tabs button. This broke it from
+   Firefox 61 onward. No issues with the Forward button that I can see.
+ */
+toolbarbutton#forward-button {
+    -moz-binding: url("userChrome.xml#js");
+}
