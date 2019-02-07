@@ -11,4 +11,5 @@ img_name=$(yad \
 --center)
 
 # using bash subtring to remove '|' character from yad input
-exec maim $HOME/Pictures/moments/"${img_name:0:-1}_$(date +%F-%H:%M).png"
+exec maim $HOME/Pictures/moments/"${img_name:0:-1}_$(date +%F-%H:%M).png" &
+exec echo $HOME/Pictures/moments/"${img_name:0:-1}_$(date +%F-%H:%M).png" | xclip -selection clipboard
