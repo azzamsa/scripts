@@ -1,6 +1,16 @@
-# azzamsa script
+# Scripts
 
 Collection of my daily script
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Scripts](#scripts)
+    - [Auto Suspend](#auto-suspend)
+    - [Take Your Moments](#take-your-moments)
+    - [Read Book Warning](#read-book-warning)
+
+<!-- markdown-toc end -->
 
 
 ## Auto Suspend
