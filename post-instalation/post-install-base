@@ -75,7 +75,7 @@ mv font-awesome/ ~/.local/share/fonts/
 fc-cache -fv
 
 # python
-pip3 install virtualenvwrapper
+pip3 install virtualenvwrapper py3status
 mkvirtualenv --python=/usr/bin/python3.7 global37
 workon global37
 pip install setuptools
@@ -104,7 +104,17 @@ EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 # wallpaper & sounds
 cd $HOME
 mkdir sounds wallpapers
+cd ~/wallpapers
+wget https://drive.google.com/open?id=1YzFawW3x03r7ecwDfPm_amQUfTTfKJmM
+wget https://drive.google.com/open?id=1484KhyYA-_jdGjwgzCSA4gtT1Md0FujR
+
+cd ~/sounds
+wget https://drive.google.com/open?id=1-esP9JR9Gegpe_6rk6OuBnpCBvv5zM3n
+
 cd ~/Pictures
 mkdir moments screenshots bin code-coba-home
 
 echo "Setup finished"
+cat <<- EOF
+  1. change BIOS setting for beep and fn-key
+EOF
