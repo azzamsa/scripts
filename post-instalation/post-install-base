@@ -7,7 +7,7 @@ sudo apt -y upgrade
 # install main package
 sudo apt-get install -y --no-install-recommends \
      sudo gtk3.0 xfce4 firmware-iwlwifi \
-     git etckeeper wget gnupg2 xclip tar\
+     git etckeeper wget gnupg2 pinentry-gtk2 xclip tar\
      arandr emacs-gtk rxvt-unicode-256color tmux\
      stow maim feh sxiv file-roller mpv thunar \
      yad silversearcher-ag ssh \
