@@ -91,6 +91,6 @@ sudo make install
 # install fun
 sudo apt-get -y install toilet cowsay cmatrix neofetch
 
-# TODO debeaver firefox tor texlive
+# TODO debeaver firefox tor texlive foxit-reader pelican-setup
 
 echo "Setup finished"
