@@ -13,7 +13,7 @@ sudo apt-get install -y --no-install-recommends \
      yad silversearcher-ag ssh \
      thunar-archive-plugin gvfs-fuse gvfs-backends \
      markdown vorbis-tools git-crypt maildir-utils \
-     acpi htop zip unzip fonts-symbola
+     acpi htop zip unzip mousepad aspell fonts-symbola
 
 # window manager related
 sudo apt-get -y install \
@@ -112,6 +112,14 @@ cd scripts
 sudo mv auto-suspend/ /opt/
 sudo ln -s /opt/auto-suspend/auto-suspend  /usr/local/bin/auto-suspend
 
+# aspell
+cd ~
+wget -q https://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2
+tar xf aspell5-id-1.2-0.tar.bz2
+cd aspell5-id-1.2-0/
+./configure
+make
+sudo make install
 
 # setup dotfiles
 cd ~
