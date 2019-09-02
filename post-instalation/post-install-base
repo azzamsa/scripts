@@ -2,72 +2,84 @@
 
 # Keep Debian up to date
 sudo apt -y update
-sudo apt -y upgrade
 
 # install main package
 sudo apt-get install -y --no-install-recommends \
-     sudo gtk3.0 xfce4 firmware-iwlwifi \
+     xserver-xorg xinit\
+     sudo gtk3.0 firmware-iwlwifi \
      git etckeeper wget gnupg2 pinentry-gtk2 xclip tar\
      arandr emacs-gtk rxvt-unicode-256color tmux\
      stow maim feh sxiv file-roller mpv thunar \
      yad silversearcher-ag ssh \
-     thunar-archive-plugin gvfs gvfs-fuse gvfs-common gvfs-backends \
-     markdown ogg123 git-crypt maildir-utils
+     thunar-archive-plugin gvfs-fuse gvfs-backends \
+     markdown vorbis-tools git-crypt maildir-utils \
+     acpi htop zip unzip fonts-symbola
 
 # window manager related
 sudo apt-get -y install \
      i3 i3lock rofi light dunst unclutter compton redshift \
-     light network-manager-gnome alasa-utils pavucontrol
+     light network-manager-gnome alasa-utils pavucontrol \
+     py3status xcape arc-theme
 
 # work
 sudo apt-get -y install \
      python3 python3-dev python3-venv python3-pip
 
-# font & themes
-sudo apt-get -y install arc-theme
-
 # setup
 echo "Installed base app. I will setup them for you."
 
 ## firefox
-cd /opt
-wget https://download-installer.cdn.mozilla.net/pub/devedition/releases/69.0b15/linux-x86_64/en-US/firefox-69.0b15.tar.bz2
+cd ~
+wget -q https://download-installer.cdn.mozilla.net/pub/devedition/releases/69.0b15/linux-x86_64/en-US/firefox-69.0b15.tar.bz2
 tar -xf firefox-69.0b14.tar.bz2
-cd firefox
-ln -s ~/opt/firefox/firefox /usr/local/bin/firefox-dev
+sudo mv firefox/ /opt/
+sudo ln -s ~/opt/firefox/firefox /usr/local/bin/firefox-dev
 
 ## telegram
-wget https://updates.tdesktop.com/tlinux/tsetup.1.8.2.tar.xz
+cd ~
+wget -q https://updates.tdesktop.com/tlinux/tsetup.1.8.2.tar.xz
 tar -xf tsetup.1.8.2.tar.xz
-ln -s /opt/Telegram/Telegram  /usr/local/bin/Telegram
+sudo mv Telegram/ /opt/
+sudo ln -s /opt/Telegram/Telegram  /usr/local/bin/Telegram
 
 ## greenclip
-wget https://github.com/erebe/greenclip/releases/download/3.2/greenclip
-ln -s /opt/greenclip  /usr/local/bin/greenclip
+cd ~
+wget -q https://github.com/erebe/greenclip/releases/download/3.2/greenclip
+sudo mv greenclip /opt/
+sudo ln -s /opt/greenclip  /usr/local/bin/greenclip
+
+## light
+cd ~
+wget -q https://github.com/haikarainen/light/releases/download/v1.2/light_1.2_amd64.deb
+sudo dpkg -i light_1.2_amd64.deb
 
 ## capitane
-wget https://github.com/keeferrourke/capitaine-cursors/archive/master.zip
-unzip capitaine-cursors-master.zip
-cd capitaine-cursors-master/
+cd ~
+wget -q -O capitaine-cursors-master.zip https://github.com/keeferrourke/capitaine-cursors/archive/master.zip
+unzip -q capitaine-cursors-master.zip
 mkdir -p ~/.icons/capitaine-cursors
-cp -pr dist/ ~/.icons/capitaine-cursors
+cd capitaine-cursors-master/
+cp -pr dist/ ~/.icons/capitaine-cursors/
 
 ## i3-gaps
-wget https://github.com/maestrogerardo/i3-gaps-deb/archive/master.zip
+cd ~
+$ wget -q -O i3-gaps-deb-master.zip https://github.com/maestrogerardo/i3-gaps-deb/archive/master.zip
 unzip i3-gaps-deb-master.zip
 cd i3-gaps-deb-master
 sudo chmod +x i3-gaps-deb
 ./i3-gaps-deb
 
 # fonts
-wget https://github.com/adobe-fonts/source-code-pro/archive/release.zip
+cd ~
+wget -q -O source-code-pro-release.zip https://github.com/adobe-fonts/source-code-pro/archive/release.zip
 unzip source-code-pro-release.zip
 cd source-code-pro-release/
 mv TTF/ source-code-pro/
 mkdir -p ~/.local/share/fonts/
 mv source-code-pro/ ~/.local/share/fonts/
 
-wget https://use.fontawesome.com/releases/v5.10.1/fontawesome-free-5.10.1-desktop.zip
+cd ~
+wget -q https://use.fontawesome.com/releases/v5.10.1/fontawesome-free-5.10.1-desktop.zip
 unzip fontawesome-free-5.10.1-desktop.zip
 cd fontawesome-free-5.10.1-desktop/
 mv otfs/ font-awesome/
@@ -75,44 +87,76 @@ mv font-awesome/ ~/.local/share/fonts/
 fc-cache -fv
 
 # python
-pip3 install virtualenvwrapper py3status
+cd ~
+sudo apt install python3-setuptools
+sudo pip3 install wheel
+sudo pip3 install virtualenvwrapper
 mkvirtualenv --python=/usr/bin/python3.7 global37
 workon global37
-pip install setuptools
 pip install flake8 black
 
+# st
+cd ~
+git clone https://github.com/LukeSmithxyz/st
+cd st/
+make
+cd ..
+mv st/ stterm/
+sudo mv stterm/ /opt/
+sudo ln -s /opt/stterm/st  /usr/local/bin/stterm
+
+# auto-suspend
+cd ~
+git clone https://github.com/azzamsa/scripts/
+cd scripts
+sudo mv auto-suspend/ /opt/
+sudo ln -s /opt/auto-suspend/auto-suspend  /usr/local/bin/auto-suspend
+
+
 # setup dotfiles
-cd $HOME
+cd ~
 git clone https://github.com/azzamsa/dotfiles
 cd dotfiles
 for d in */ ; do
     stow "$d"
 done
 
+# emacs dotfiles
+cd ~
+rm -rf .emacs.d/
+git clone https://github.com/azzamsa/emacs.d .emacs.d
+
 # touchpad
 # https://unix.stackexchange.com/a/337218
 sudo apt remove xserver-xorg-input-synaptics
 sudo apt install xserver-xorg-input-libinput
+sudo mkdir -p /etc/X11/xorg.conf.d/
+
 sudo echo 'Section "InputClass"
         Identifier "libinput touchpad catchall"
         MatchIsTouchpad "on"
         MatchDevicePath "/dev/input/event*"
         Driver "libinput"
         Option "Tapping" "on"
-EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
+EndSection' > ~/40-libinput.conf
+sudo mv ~/40-libinput.conf /etc/X11/xorg.conf.d/
 
 # wallpaper & sounds
-cd $HOME
+cd ~
 mkdir sounds wallpapers
 cd ~/wallpapers
-wget https://drive.google.com/open?id=1YzFawW3x03r7ecwDfPm_amQUfTTfKJmM
-wget https://drive.google.com/open?id=1484KhyYA-_jdGjwgzCSA4gtT1Md0FujR
+wget -q https://www.dropbox.com/s/v8ce2ijijfdsiv0/wallpaper.jpg
+wget -q https://www.dropbox.com/s/zvxeq8so7zwr3i1/lockscreen.png
 
 cd ~/sounds
-wget https://drive.google.com/open?id=1-esP9JR9Gegpe_6rk6OuBnpCBvv5zM3n
+wget -q https://www.dropbox.com/s/xxrqmtd3q15gymz/coin-work-medium.ogg
+wget -q https://www.dropbox.com/s/w6w4mb5oeptl7c7/ding-rest-medium.ogg
+wget -q https://www.dropbox.com/s/61xsvfa1ie2fn60/marimbach-low-bat.ogg
 
 cd ~/Pictures
-mkdir moments screenshots bin code-coba-home
+mkdir moments screenshots
+cd ~
+mkdir bin code-coba-home
 
 echo "Setup finished"
 cat <<- EOF
