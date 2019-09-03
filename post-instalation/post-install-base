@@ -171,4 +171,5 @@ mkdir bin code-coba-home
 echo "Setup finished"
 cat <<- EOF
   1. change BIOS setting for beep and fn-key
+  2. add new partition to your /etc/fstab
 EOF
