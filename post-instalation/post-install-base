@@ -14,7 +14,7 @@ sudo apt-get install -y --no-install-recommends \
      thunar-archive-plugin gvfs-fuse gvfs-backends \
      markdown vorbis-tools git-crypt maildir-utils \
      acpi htop zip unzip mousepad aspell pulseaudio \
-     xdotool flameshot autojump aspell \
+     xdotool flameshot autojump aspell gnome-keyring\
      fonts-symbola
 
 # window manager related
@@ -170,6 +170,8 @@ mkdir bin code-coba-home
 
 echo "Setup finished"
 cat <<- EOF
+Your next TODO:
   1. change BIOS setting for beep and fn-key
   2. add new partition to your /etc/fstab
+  3. add `pam_gnome_keyring.so` to /etc/pam.d/passwd
 EOF
