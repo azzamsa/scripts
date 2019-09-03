@@ -1,0 +1,4 @@
+#!/bin/bash
+
+i3lock -i $HOME/wallpapers/lockscreen.png
+systemctl suspend
