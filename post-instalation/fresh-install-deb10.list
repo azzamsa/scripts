@@ -153,6 +153,7 @@ gvfs-libs:amd64					install
 gzip						install
 hicolor-icon-theme				install
 hostname					install
+htop						install
 i3						install
 i3-wm						install
 i3lock						install
@@ -191,6 +192,7 @@ libargon2-1:amd64				install
 libasan5:amd64					install
 libasound2:amd64				install
 libasound2-data					install
+libasound2-plugins:amd64			install
 libaspell15:amd64				install
 libass9:amd64					install
 libassuan0:amd64				install
@@ -216,6 +218,7 @@ libavcodec58:amd64				install
 libavdevice58:amd64				install
 libavfilter7:amd64				install
 libavformat58:amd64				install
+libavresample4:amd64				install
 libavutil56:amd64				install
 libayatana-appindicator3-1			install
 libayatana-ido3-0.4-0:amd64			install
@@ -398,6 +401,8 @@ libgtk2.0-0:amd64				install
 libgtk2.0-common				install
 libgtkmm-2.4-1v5:amd64				install
 libgtkmm-3.0-1v5:amd64				install
+libgtksourceview-3.0-1:amd64			install
+libgtksourceview-3.0-common			install
 libgudev-1.0-0:amd64				install
 libgwengui-gtk3-0:amd64				install
 libgwenhywfar-data				install
@@ -579,6 +584,7 @@ libpsl5:amd64					install
 libpthread-stubs0-dev:amd64			install
 libpulse-mainloop-glib0:amd64			install
 libpulse0:amd64					install
+libpulsedsp:amd64				install
 libpython-stdlib:amd64				install
 libpython2-stdlib:amd64				install
 libpython2.7:amd64				install
@@ -638,6 +644,7 @@ libsoup-gnome2.4-1:amd64			install
 libsoup2.4-1:amd64				install
 libsoxr0:amd64					install
 libspeex1:amd64					install
+libspeexdsp1:amd64				install
 libsqlite3-0:amd64				install
 libsratom-0-0:amd64				install
 libss2:amd64					install
@@ -712,6 +719,7 @@ libwebkit2gtk-4.0-37:amd64			install
 libwebp6:amd64					install
 libwebpdemux2:amd64				install
 libwebpmux3:amd64				install
+libwebrtc-audio-processing1:amd64		install
 libwoff1:amd64					install
 libwrap0:amd64					install
 libwww-perl					install
@@ -813,6 +821,7 @@ libzmq5:amd64					install
 libzstd1:amd64					install
 libzvbi-common					install
 libzvbi0:amd64					install
+light						install
 lintian						deinstall
 linux-base					install
 linux-compiler-gcc-8-x86			install
@@ -841,6 +850,7 @@ markdown					install
 mawk						install
 mime-support					install
 mount						install
+mousepad					install
 mpv						install
 mysql-common					install
 nano						install
@@ -877,6 +887,8 @@ policykit-1-gnome				install
 popularity-contest				install
 procps						install
 psmisc						install
+pulseaudio					install
+pulseaudio-utils				install
 py3status					install
 python						install
 python-apt-common				install
