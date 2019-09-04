@@ -123,6 +123,16 @@ cd aspell5-id-1.2-0/
 make
 sudo make install
 
+# vivid
+cd ~
+wget -q https://github.com/sharkdp/vivid/releases/download/v0.4.0/vivid-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+tar -xf vivid-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+mv vivid-v0.4.0-x86_64-unknown-linux-gnu/ vivid/
+cp -r vivid/share/ ~/.config/
+sudo mv vivid/ /opt/
+sudo ln -s /opt/vivid/vivid  /usr/local/bin/vivid
+
+
 # setup dotfiles
 cd ~
 git clone https://github.com/azzamsa/dotfiles
