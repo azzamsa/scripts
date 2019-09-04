@@ -109,10 +109,15 @@ sudo ln -s /opt/stterm/st  /usr/local/bin/stterm
 
 # auto-suspend
 cd ~
-git clone https://github.com/azzamsa/scripts/
+git clone --depth=1 https://github.com/azzamsa/scripts/
 cd scripts
 sudo mv auto-suspend/ /opt/
 sudo ln -s /opt/auto-suspend/auto-suspend  /usr/local/bin/auto-suspend
+
+# take-your-moments
+cd ~/scripts
+sudo mv take-your-moments/ /opt/
+sudo ln -s /opt/take-your-moments/take-your-moments  /usr/local/bin/take-your-moments
 
 # aspell
 cd ~
