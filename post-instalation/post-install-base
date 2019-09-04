@@ -15,7 +15,7 @@ sudo apt-get install -y --no-install-recommends \
      markdown vorbis-tools git-crypt maildir-utils \
      acpi htop zip unzip mousepad aspell pulseaudio \
      xdotool flameshot autojump aspell gnome-keyring\
-     xautolock fonts-symbola \
+     xautolock libnotify-bin fonts-symbola \
 
 # window manager related
 sudo apt-get -y install \
