@@ -2,19 +2,34 @@
 
 # take your moments
 # take screnshot and give it a name directly
-img_name=$(yad \
-               --width=200 \
-               --form \
-               --field="Name" \
-               --button="Save" \
-               --center)
 
-case "$1" in
-    full)
-        # using bash subtring to remove '|' character from yad input
-        exec maim --hidecursor $HOME/Pictures/moments/"${img_name:0:-1}_$(date +%F-%H:%M).png"
-        ;;
-    selection)
-        exec maim -s --hidecursor $HOME/Pictures/moments/"${img_name:0:-1}_$(date +%F-%H:%M).png"
-        ;;
-esac
+prompt_path(){
+    img_name=$(yad \
+                   --width=200 \
+                   --form \
+                   --field="Name" \
+                   --button="Save" \
+                   --center)
+}
+
+save_img(){
+    # using bash sub-string to remove '|' character from yad input
+    exec xclip -se c -t image/png -o > $HOME/Pictures/moments/"${img_name:0:-1}_$(date +%F-%H:%M).png"
+}
+
+main(){
+    case "$1" in
+        full)
+            exec maim --hidecursor | xclip -se c -t image/png
+            prompt_path
+            save_img
+            ;;
+        selection)
+            exec maim -s --hidecursor | xclip -se c -t image/png
+            prompt_path
+            save_img
+            ;;
+    esac
+}
+
+main ${@}
