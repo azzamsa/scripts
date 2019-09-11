@@ -139,6 +139,11 @@ sudo ln -s /opt/vivid/vivid  /usr/local/bin/vivid
 
 
 # setup dotfiles
+# TODO branch choice
+cd ~
+mkdir .screenlayout
+cd ~/.config/
+mkdir mpv i3 gtk-3.0 i3status dunst
 cd ~
 git clone https://github.com/azzamsa/dotfiles
 cd dotfiles
