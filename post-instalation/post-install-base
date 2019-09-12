@@ -15,7 +15,7 @@ sudo apt-get install -y --no-install-recommends \
      markdown vorbis-tools git-crypt maildir-utils \
      acpi htop zip unzip mousepad aspell pulseaudio \
      xdotool flameshot autojump aspell gnome-keyring\
-     xautolock libnotify-bin fonts-symbola \
+     xautolock libnotify-bin fonts-symbola
 
 # window manager related
 sudo apt-get -y install \
@@ -137,9 +137,24 @@ cp -r vivid/share/ ~/.config/
 sudo mv vivid/ /opt/
 sudo ln -s /opt/vivid/vivid  /usr/local/bin/vivid
 
+prepare_branch(){
+    declare -A branches
+    branches[1]="master"
+    branches[2]="thinkpad-l30"
+
+    cat <<- EOF
+Please choose Your branch (input a number):
+1. ${branches[1]}
+2. ${branches[2]}
+EOF
+
+    read branch_choice
+    git checkout ${branches[$branch_choice]}
+}
+
+
 
 # setup dotfiles
-# TODO branch choice
 cd ~
 mkdir .screenlayout
 cd ~/.config/
@@ -147,6 +162,7 @@ mkdir mpv i3 gtk-3.0 i3status dunst
 cd ~
 git clone https://github.com/azzamsa/dotfiles
 cd dotfiles
+prepare_branch
 for d in */ ; do
     stow "$d"
 done
