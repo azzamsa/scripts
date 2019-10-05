@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Keep Debian up to date
+sudo apt-get -y update
+
+# install main package
+sudo apt-get -y install \
+     dkms build-essential linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
+
+# utilities
+sudo apt-get -y install \
+     borgbackup ncdu htop mat bleachbit \
+     unzip curl wget p7zip p7zip-full unar unrar-free\
+     gparted-gtk
+
+# programming
+sudo apt-get -y install \
+     docker.io docker-compose mycli sqlitebrowser \
+     borgbackup ncdu htop mat bleachbit etckeeper
+
+
+# office
+sudo apt-get -y install \
+     libreoffice libreoffice-style-tango libreoffice-gtk libreoffice-gtk3 \
+     okular evince
+
+# multimedia
+sudo apt-get -y install \
+     mpv audacity openshot \
+     gimp inkscape ffmpeg
+
+
+# setup rust
+curl https://sh.rustup.rs -sSf | sh
+cargo install rustfmt racer
+
+# setup js
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
