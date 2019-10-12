@@ -22,13 +22,20 @@ sudo apt-get -y install \
 # office
 sudo apt-get -y install \
      libreoffice libreoffice-style-tango libreoffice-gtk libreoffice-gtk3 \
-     okular evince
+     okular evince mu4e isync
 
 # multimedia
 sudo apt-get -y install \
      mpv audacity openshot \
      gimp inkscape ffmpeg
 
+# setup mu4e
+cd ~
+mkdir -p ~/Email/memail
+cd ~/Email/memail
+mkdir Sent Drafts Trash Archive
+mu index --maildir=~/Email/memail
+mbsync -c ~/Email/.mbsyncrc memail
 
 # setup rust
 curl https://sh.rustup.rs -sSf | sh
