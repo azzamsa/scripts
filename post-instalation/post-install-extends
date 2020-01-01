@@ -29,6 +29,14 @@ sudo apt-get -y install \
      mpv audacity openshot \
      gimp inkscape ffmpeg
 
+# Tor
+cd ~
+wget -q https://dist.torproject.org/torbrowser/9.0.1/tor-browser-linux64-9.0.1_en-US.tar.xz
+tar -xf tor-browser-linux64-9.0.1_en-US.tar.xz
+sudo mv firefox/ /opt/
+sudo ln -s ~/opt/firefox/firefox /usr/local/bin/firefox-dev
+
+
 # setup mu4e
 cd ~
 mkdir -p ~/Email/memail
