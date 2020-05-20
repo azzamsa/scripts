@@ -8,7 +8,7 @@ sudo apt-get install -y --no-install-recommends \
      xserver-xorg xinit\
      sudo gtk3.0 firmware-iwlwifi \
      git etckeeper wget gnupg2 pinentry-gtk2 xclip tar\
-     arandr emacs-gtk rxvt-unicode-256color tmux\
+     arandr emacs-gtk tmux\
      stow maim feh sxiv file-roller mpv thunar \
      yad silversearcher-ag ssh \
      thunar-archive-plugin gvfs-fuse gvfs-backends \
