@@ -8,7 +8,7 @@ sudo apt-get install -y --no-install-recommends \
      xserver-xorg xinit\
      sudo gtk3.0 firmware-iwlwifi \
      git etckeeper wget gnupg2 pinentry-gtk2 xclip tar\
-     arandr emacs-gtk tmux\
+     arandr tmux\
      stow maim feh sxiv file-roller mpv thunar \
      yad silversearcher-ag ssh \
      thunar-archive-plugin gvfs-fuse gvfs-backends \
@@ -136,6 +136,15 @@ mv vivid-v0.4.0-x86_64-unknown-linux-gnu/ vivid/
 cp -r vivid/share/ ~/.config/
 sudo mv vivid/ /opt/
 sudo ln -s /opt/vivid/vivid  /usr/local/bin/vivid
+
+# emacs
+cd ~
+wget -q https://mirror.freedif.org/GNU/emacs/emacs-26.3.tar.xz
+tar -xf emacs-26.3.tar.xz
+cd emacs-26.3/
+./configure --with-modules
+make
+sudo make install
 
 prepare_branch(){
     declare -A branches
