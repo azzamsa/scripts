@@ -142,9 +142,14 @@ cd ~
 wget -q https://mirror.freedif.org/GNU/emacs/emacs-26.3.tar.xz
 tar -xf emacs-26.3.tar.xz
 cd emacs-26.3/
+sudo apt -y build-dep emacs
 ./configure --with-modules
 make
 sudo make install
+
+# vterm
+sudo apt-get -y install \
+     libvterm0 libtool-bin
 
 prepare_branch(){
     declare -A branches
