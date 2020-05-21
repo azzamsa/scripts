@@ -45,6 +45,14 @@ mkdir Sent Drafts Trash Archive
 mu index --maildir=~/Email/memail
 mbsync -c ~/Email/.mbsyncrc memail
 
+# setup guix
+sudo su
+cd /tmp
+wget https://git.savannah.gnu.org/cgit/guix.git/plain/etc/guix-install.sh
+chmod +x guix-install.sh
+wget https://sv.gnu.org/people/viewgpg.php?user_id=15145 -qO - | gpg --import -
+./guix-install.sh
+
 # setup rust
 curl https://sh.rustup.rs -sSf | sh
 cargo install rustfmt racer
