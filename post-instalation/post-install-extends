@@ -54,8 +54,21 @@ wget https://sv.gnu.org/people/viewgpg.php?user_id=15145 -qO - | gpg --import -
 ./guix-install.sh
 
 # setup rust
-curl https://sh.rustup.rs -sSf | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install rustfmt racer
 
 # setup js
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+
+# py3status
+pip3 install islam
+
+# pass-otp
+cd /otp
+sudo mkdir pass-otp
+sudo chown -R $USER:$USER pass-otp/
+git clone https://github.com/tadfisher/pass-otp
+cd pass-otp/
+sudo make install
+sudo apt-get install -y oathtool
+
