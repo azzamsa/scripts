@@ -22,7 +22,12 @@ sudo apt-get -y install \
 # office
 sudo apt-get -y install \
      libreoffice libreoffice-style-tango libreoffice-gtk libreoffice-gtk3 \
-     okular evince mu4e isync cups system-config-printer
+     okular evince  cups system-config-printer
+
+# email
+sudo apt-get -y install \
+     maildir-util isync w3m
+
 
 # multimedia
 sudo apt-get -y install \
