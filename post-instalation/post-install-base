@@ -10,7 +10,7 @@ sudo apt-get install -y --no-install-recommends \
      git etckeeper wget gnupg2 pinentry-gtk2 xclip tar\
      arandr tmux\
      stow maim feh sxiv file-roller mpv thunar \
-     yad silversearcher-ag ssh \
+     yad silversearcher-ag ssh ssh-askpass \
      thunar-archive-plugin gvfs-fuse gvfs-backends \
      markdown vorbis-tools git-crypt maildir-utils \
      acpi htop zip unzip mousepad aspell pulseaudio \
