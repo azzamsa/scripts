@@ -77,3 +77,8 @@ cd pass-otp/
 sudo make install
 sudo apt-get install -y oathtool
 
+# z
+cd /otp
+sudo mkdir z
+sudo chown -R $USER:$USER z/
+git clone https://github.com/rupa/z/ z/
