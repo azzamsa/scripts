@@ -22,7 +22,7 @@ sudo apt-get -y install \
 # office
 sudo apt-get -y install \
      libreoffice libreoffice-style-tango libreoffice-gtk libreoffice-gtk3 \
-     okular evince  cups system-config-printer
+     okular okular-extra-backends evince cups system-config-printer pandoc
 
 # email
 sudo apt-get -y install \
