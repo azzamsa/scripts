@@ -62,6 +62,10 @@ wget https://sv.gnu.org/people/viewgpg.php?user_id=15145 -qO - | gpg --import -
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install rustfmt racer
 
+
+sudo curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o ~/.local/bin/rust-analyzer
+sudo chmod +x ~/.local/bin/rust-analyzer
+
 # setup js
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
 
@@ -78,7 +82,11 @@ sudo make install
 sudo apt-get install -y oathtool
 
 # z
-cd /otp
+cd /opt/
 sudo mkdir z
 sudo chown -R $USER:$USER z/
 git clone https://github.com/rupa/z/ z/
+
+# Go
+wget -q https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.15.1.linux-amd64.tar.gz
