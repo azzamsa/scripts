@@ -86,6 +86,34 @@ unzip fontawesome-free-5.10.1-desktop.zip
 cd fontawesome-free-5.10.1-desktop/
 mv otfs/ font-awesome/
 mv font-awesome/ ~/.local/share/fonts/
+
+cd ~
+wget -q https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip
+unzip Fira_Code_v5.2.zip
+cd Fira_Code_v5.2/
+mv ttv/ fira-code/
+mkdir -p ~/.local/share/fonts/
+mv fira-code/ ~/.local/share/fonts/
+
+cd ~
+wget -q https:// github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip
+unzip FiraCode-Regular-Symbol.zip
+mv FiraCode-Regular-Symbol.otf ~/.local/share/fonts/
+
+cd ~
+wget -q https:// github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip
+unzip FiraCode-Regular-Symbol.zip
+mv FiraCode-Regular-Symbol.otf ~/.local/share/fonts/
+
+cd ~
+git clone https://github.com/johnw42/fira-code-emacs
+cd fira-code-emacs
+make
+mv modified/ fira-code-emacs/
+mv fira-code-emacs ~/.local/share/fonts/
+
+# TODO fira-sans font
+
 fc-cache -fv
 
 # python
