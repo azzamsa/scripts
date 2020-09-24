@@ -21,7 +21,7 @@ sudo apt-get install -y --no-install-recommends \
 sudo apt-get install -y --no-install-recommends\
      i3 i3lock rofi light dunst unclutter compton redshift \
      light network-manager-gnome network-manager-openvpn alasa-utils pavucontrol \
-     py3status xcape arc-theme qt5ct
+     xcape arc-theme qt5ct
 
 # work
 sudo apt-get -y install \
