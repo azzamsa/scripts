@@ -62,6 +62,7 @@ wget https://sv.gnu.org/people/viewgpg.php?user_id=15145 -qO - | gpg --import -
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install rustfmt racer
 cargo install --git https://github.com/greshake/i3status-rust i3status-rs
+cargo install cargo-edit
 
 ## rust utils
 cargo install evcxr_repl
