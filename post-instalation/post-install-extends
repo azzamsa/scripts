@@ -9,7 +9,7 @@ sudo apt-get install -y --no-install-recommends \
 
 # utilities
 sudo apt-get install -y --no-install-recommends \
-     borgbackup ncdu htop mat bleachbit \
+     fish borgbackup ncdu htop mat bleachbit \
      unzip curl wget p7zip p7zip-full unar unrar-free\
      gparted-gtk torbrowser-launcher
 
