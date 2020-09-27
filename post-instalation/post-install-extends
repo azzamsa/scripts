@@ -76,7 +76,7 @@ sudo chmod +x ~/.local/bin/rust-analyzer
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
 
 # py3status
-pip3 install islam
+pip3 install islam poetry virtualfish --user
 
 # pass-otp
 cd /otp
