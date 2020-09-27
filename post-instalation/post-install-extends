@@ -67,6 +67,7 @@ cargo install cargo-edit
 ## rust utils
 cargo install evcxr_repl
 cargo install hyperfine
+cargo install zoxide -f # z replacement
 
 sudo curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o ~/.local/bin/rust-analyzer
 sudo chmod +x ~/.local/bin/rust-analyzer
@@ -86,12 +87,10 @@ cd pass-otp/
 sudo make install
 sudo apt-get install -y oathtool
 
-# z
-cd /opt/
-sudo mkdir z
-sudo chown -R $USER:$USER z/
-git clone https://github.com/rupa/z/ z/
-
 # Go
 wget -q https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.15.1.linux-amd64.tar.gz
+
+# fish
+chsh -s `which fish` # change bash to fish
+vf install # virtual fish
