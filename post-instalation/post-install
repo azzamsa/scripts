@@ -1,0 +1,159 @@
+#!/bin/bash
+
+# Add repository
+echo "deb http://ftp.au.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://ftp.au.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
+
+# Keep Debian up to date
+sudo apt -y update
+
+# main package
+sudo apt-get install -y --no-install-recommends \
+     xserver-xorg xinit libdbus-1-dev pgk-config \
+     sudo firmware-iwlwifi x11-xserver-utils libssl-dev \
+     pavucontrol pulseaudio \
+     fish fuse git etckeeper gnupg2 ssh ssh-agent curl stow rsync \
+     keychain
+
+# utilities
+sudo apt-get install -y --no-install-recommends \
+     i3 i3lock rofi light dunst unclutter \
+     pass light xclip network-manager-gnome \
+     flameshot feh ristretto file-roller mousepad workrave \
+     thunar thunar-archive-plugin gvfs-fuse gvfs-backends \
+     htop tar zip unzip unar unrar-free ncdu mat borgbackup gparted arandr \
+     mpv gimp inkscape libreoffice libreoffice-gtk3 audacity \
+     okular okular-extra-backends evince system-config-printer \
+     maildir-utils isync aspell aspell-en \
+     zoxide ripgrep arc-theme
+
+# work
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+sudo apt-get install -y --no-install-recommends \
+     python3 python3-dev python3-venv python3-pip python3-setuptools
+
+cargo install starship vivid fnm
+
+# setup
+echo "Installed base app. I will setup them for you."
+
+# auto-suspend
+cd /tmp
+git clone --depth=1 https://github.com/azzamsa/scripts/
+cd scripts
+sudo mv auto-suspend/ /opt/
+sudo chown -R $(whoami):$(whoami) /opt/auto-suspend
+sudo ln -s /opt/auto-suspend/auto-suspend /usr/local/bin/auto-suspend
+
+# aspell
+cd /tmp
+wget -q https://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2
+tar -xf aspell5-id-1.2-0.tar.bz2
+cd aspell5-id-1.2-0/
+./configure
+make
+sudo make install
+
+## firefox
+cd /tmp
+wget -q https://download-installer.cdn.mozilla.net/pub/firefox/releases/92.0.1/linux-x86_64/en-US/firefox-92.0.1.tar.bz2
+tar -xf firefox-92.0.1.tar.bz2
+sudo mv firefox/ /opt/
+sudo chown -R $(whoami):$(whoami) /opt/firefox
+sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+
+## telegram
+cd /tmp
+wget -q https://updates.tdesktop.com/tlinux/tsetup.3.1.1.tar.xz
+tar -xf tsetup.3.1.1.tar.xz
+sudo mv Telegram/ /opt/
+sudo chown -R $(whoami):$(whoami) /opt/Telegram
+sudo ln -s /opt/Telegram/Telegram /usr/local/bin/Telegram
+
+## greenclip
+cd /tmp
+wget -q https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+sudo mv greenclip /opt/
+sudo ln -s /opt/greenclip /usr/local/bin/greenclip
+
+## pass-otp
+cd /tmp
+git clone https://github.com/tadfisher/pass-otp
+cd pass-otp/
+sudo make install
+
+# wallpaper & sounds
+mkdir ~/sounds ~/wallpapers
+cd ~/wallpapers
+wget -q https://www.dropbox.com/s/o5gvczc3ymgg8vv/wallpapers.tar.gz?dl=0
+tar -xf wallpapers.tar.gz
+rm wallpapers.tar.gz
+
+cd ~/sounds
+wget -q https://www.dropbox.com/s/whao1ljkd26n3nw/sounds.tar.gz?dl=0
+tar -xf sounds.tar.gz
+rm sounds.tar.gz
+
+# fonts
+cd ~/.local/share/fonts/
+wget -q https://www.dropbox.com/s/jp7s95ihd48edar/fonts.tar.gz?dl=0
+tar -xf fonts.tar.gz
+rm fonts.tar.gz
+fc-cache -fv
+
+# emacs
+sudo apt-get build-dep emacs
+inn libgccjit-9-dev
+# ./configure --with-native-compilation
+# make
+# sudo make install
+
+
+# setup dotfiles
+cd ~
+mkdir .screenlayout
+cd ~/.config/
+mkdir mpv i3 gtk-3.0 i3status dunst
+cd ~
+git clone https://github.com/azzamsa/dotfiles
+cd dotfiles
+prepare_branch
+for d in */ ; do
+    stow "$d"
+done
+
+# setup mu4e
+# mu init --maildir=~/Email/secret --my-address=secret
+
+# dual-monitor
+echo "
+HandleSuspendKey=ignore
+HandleLidSwitch=ignore
+HandleLidSwitchDocked=ignore
+"  | sudo tee -a /etc/systemd/logind.conf
+
+# touchpad
+# https://unix.stackexchange.com/a/337218
+sudo apt remove xserver-xorg-input-synaptics
+sudo apt install xserver-xorg-input-libinput
+sudo mkdir -p /etc/X11/xorg.conf.d/
+
+sudo echo 'Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "Tapping" "on"
+EndSection' > ~/40-libinput.conf
+sudo mv ~/40-libinput.conf /etc/X11/xorg.conf.d/
+
+# fish
+chsh -s `which fish` # change bash to fish
+vf install # virtual fish
+
+echo "Setup finished"
+cat <<- EOF
+Your next TODO:
+  1. change BIOS setting for beep
+EOF
