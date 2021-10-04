@@ -115,7 +115,7 @@ git clone https://github.com/tadfisher/pass-otp
 cd pass-otp/
 sudo make install
 
-# wallpaper & sounds
+# wallpaper, sounds, fonts, and icons
 mkdir ~/sounds ~/wallpapers
 cd ~/wallpapers
 wget -q https://www.dropbox.com/s/o5gvczc3ymgg8vv/wallpapers.tar.gz?dl=0
@@ -133,6 +133,13 @@ wget -q https://www.dropbox.com/s/jp7s95ihd48edar/fonts.tar.gz?dl=0
 tar -xf fonts.tar.gz
 rm fonts.tar.gz
 fc-cache -fv
+
+# icons
+mkdir ~/.icons
+cd ~/.icons
+wget -q https://www.dropbox.com/s/4wn1fczsx050gvl/.icons.tar.gz?dl=0
+tar -xf .icons.tar.gz
+rm .icons.tar.gz
 
 # emacs
 sudo apt-get build-dep emacs
@@ -188,4 +195,6 @@ echo "Setup finished"
 cat <<- EOF
 Your next TODO:
   1. change BIOS setting for beep
+  2. copy .authinfo.gpg and Email
+  3. build emacs
 EOF
