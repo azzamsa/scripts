@@ -44,6 +44,11 @@ sudo apt-get install -y --no-install-recommends \
 
 cargo install starship vivid fnm
 
+# setting up `ssh-agent` in fish shell is nightmare
+# I can use plain `eval (ssh-agent -c)` or `systemd --user`
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+fisher install danhper/fish-ssh-agent
+
 # setup
 echo "Installed base app. I will setup them for you."
 
