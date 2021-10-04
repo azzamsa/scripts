@@ -46,6 +46,38 @@ sudo mv auto-suspend/ /opt/
 sudo chown -R $(whoami):$(whoami) /opt/auto-suspend
 sudo ln -s /opt/auto-suspend/auto-suspend /usr/local/bin/auto-suspend
 
+# wezterm
+cd /tmp
+curl -LO https://github.com/wez/wezterm/releases/download/20210814-124438-54e29167/WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage
+chmod +x WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage
+mv ./WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage /opt/wezterm
+sudo chown -R $(whoami):$(whoami) /opt/wezterm
+sudo ln -s /opt/wezterm /usr/local/bin/wezterm
+
+# aw-qt
+cd /tmp
+wget -q https://github.com/ActivityWatch/activitywatch/releases/download/v0.11.0/activitywatch-v0.11.0-linux-x86_64.zip
+unzip activitywatch-v0.11.0-linux-x86_64.zip
+mv activitywatch /opt/
+sudo chown -R $(whoami):$(whoami) /opt/activitywatch
+sudo ln -s /opt/activitywatch/aw-qt /usr/local/bin/aw-qt
+
+# nextcloud
+cd /tmp
+wget -q https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86_64.AppImage
+chmod +x Nextcloud-3.3.5-x86_64.AppImage
+mv Nextcloud-3.3.5-x86_64.AppImage /opt/nextcloud
+sudo chown -R $(whoami):$(whoami) /opt/nextcloud
+sudo ln -s /opt/nextcloud /usr/local/bin/nextcloud
+
+# insomnia
+cd /tmp
+wget -q https://github.com/Kong/insomnia/releases/download/core%402021.5.3/Insomnia.Core-2021.5.3.AppImage
+chmod +x Insomnia.Core-2021.5.3.AppImage
+mv Insomnia.Core-2021.5.3.AppImage /opt/insomnia
+sudo chown -R $(whoami):$(whoami) /opt/insomnia
+sudo ln -s /opt/insomnia /usr/local/bin/insomnia
+
 # aspell
 cd /tmp
 wget -q https://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2
