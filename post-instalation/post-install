@@ -8,8 +8,12 @@ echo "deb-src http://ftp.au.debian.org/debian/ bullseye main contrib non-free" |
 sudo apt -y update
 
 # main package
+# fuse required by AppImage
+# libssl-dev provides certificates for culr
+# libdbus-1-dev and pkg-config required by i3status-rust and other apps, such as mousepad
+# audio won't work without pulseaudio
 sudo apt-get install -y --no-install-recommends \
-     xserver-xorg xinit libdbus-1-dev pgk-config \
+     xserver-xorg xinit libdbus-1-dev pkg-config \
      sudo firmware-iwlwifi x11-xserver-utils libssl-dev \
      pavucontrol pulseaudio \
      fish fuse git etckeeper gnupg2 ssh ssh-agent curl stow rsync \
@@ -19,6 +23,8 @@ sudo apt-get install -y --no-install-recommends \
 echo "exec i3" | tee -a ~/.xinitrc
 
 # utilities
+# xclip required by pass to copy to clipboard
+# gvfs-fuse gvfs-backends adds support for sftp in thunar
 sudo apt-get install -y --no-install-recommends \
      i3 i3lock rofi light dunst unclutter \
      pass light xclip network-manager-gnome \
@@ -160,7 +166,6 @@ mkdir mpv i3 gtk-3.0 i3status dunst
 cd ~
 git clone https://github.com/azzamsa/dotfiles
 cd dotfiles
-prepare_branch
 for d in */ ; do
     stow "$d"
 done
@@ -169,6 +174,7 @@ done
 # mu init --maildir=~/Email/secret --my-address=secret
 
 # dual-monitor
+# keep the laptot alive even if no HDMI connection
 echo "
 HandleSuspendKey=ignore
 HandleLidSwitch=ignore
