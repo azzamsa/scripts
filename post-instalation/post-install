@@ -15,6 +15,9 @@ sudo apt-get install -y --no-install-recommends \
      fish fuse git etckeeper gnupg2 ssh ssh-agent curl stow rsync \
      keychain
 
+
+echo "exec i3" | tee -a ~/.xinitrc
+
 # utilities
 sudo apt-get install -y --no-install-recommends \
      i3 i3lock rofi light dunst unclutter \
