@@ -12,10 +12,11 @@ sudo apt -y update
 # libssl-dev provides certificates for culr
 # libdbus-1-dev and pkg-config required by i3status-rust and other apps, such as mousepad
 # audio won't work without pulseaudio
+# without `gstreamer1.0-pulseaudio` apps can't play sound (such workrave can't play .wav notification sound)
 sudo apt-get install -y --no-install-recommends \
      xserver-xorg xinit libdbus-1-dev pkg-config \
      sudo firmware-iwlwifi x11-xserver-utils libssl-dev \
-     pavucontrol pulseaudio \
+     pavucontrol pulseaudio gstreamer1.0-pulseaudio\
      fish fuse git etckeeper gnupg2 ssh ssh-agent curl stow rsync \
      keychain
 
