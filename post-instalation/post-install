@@ -54,107 +54,91 @@ fisher install danhper/fish-ssh-agent
 echo "Installed base app. I will setup them for you."
 
 # auto-suspend
-cd /tmp
-git clone --depth=1 https://github.com/azzamsa/scripts/
-cd scripts
-sudo mv auto-suspend/ /opt/
+git clone --depth=1 https://github.com/azzamsa/scripts/ /tmp/scripts
+sudo mv /tmp/scripts/auto-suspend/ /opt/
 sudo chown -R $(whoami):$(whoami) /opt/auto-suspend
 sudo ln -s /opt/auto-suspend/auto-suspend /usr/local/bin/auto-suspend
 
 # wezterm
-cd /tmp
-curl -LO https://github.com/wez/wezterm/releases/download/20210814-124438-54e29167/WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage
-chmod +x WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage
-mv ./WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage /opt/wezterm
+curl -Lo /tmp/wezterm https://github.com/wez/wezterm/releases/download/20210814-124438-54e29167/WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage
+chmod +x /tmp/wezterm
+sudo mv /tmp/wezterm /opt/wezterm
 sudo chown -R $(whoami):$(whoami) /opt/wezterm
 sudo ln -s /opt/wezterm /usr/local/bin/wezterm
 
 # aw-qt
-cd /tmp
-wget -q https://github.com/ActivityWatch/activitywatch/releases/download/v0.11.0/activitywatch-v0.11.0-linux-x86_64.zip
-unzip activitywatch-v0.11.0-linux-x86_64.zip
-mv activitywatch /opt/
+curl -Lo /tmp/activitywatch.zip https://github.com/ActivityWatch/activitywatch/releases/download/v0.11.0/activitywatch-v0.11.0-linux-x86_64.zip
+unzip /tmp/activitywatch.zip
+sudo mv /tmp/activitywatch /opt/
 sudo chown -R $(whoami):$(whoami) /opt/activitywatch
 sudo ln -s /opt/activitywatch/aw-qt /usr/local/bin/aw-qt
 
 # nextcloud
-cd /tmp
-wget -q https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86_64.AppImage
-chmod +x Nextcloud-3.3.5-x86_64.AppImage
-mv Nextcloud-3.3.5-x86_64.AppImage /opt/nextcloud
+curl -Lo /tmp/nextcloud https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86_64.AppImage
+chmod +x /tmp/nextcloud
+sudo mv /tmp/nextcloud /opt/
 sudo chown -R $(whoami):$(whoami) /opt/nextcloud
 sudo ln -s /opt/nextcloud /usr/local/bin/nextcloud
 
 # insomnia
-cd /tmp
-wget -q https://github.com/Kong/insomnia/releases/download/core%402021.5.3/Insomnia.Core-2021.5.3.AppImage
-chmod +x Insomnia.Core-2021.5.3.AppImage
-mv Insomnia.Core-2021.5.3.AppImage /opt/insomnia
+curl -Lo /tmp/insomnia https://github.com/Kong/insomnia/releases/download/core%402021.5.3/Insomnia.Core-2021.5.3.AppImage
+chmod +x /tmp/insomnia
+mv /tmp/insomnia /opt/
 sudo chown -R $(whoami):$(whoami) /opt/insomnia
 sudo ln -s /opt/insomnia /usr/local/bin/insomnia
 
 # aspell
-cd /tmp
-wget -q https://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2
-tar -xf aspell5-id-1.2-0.tar.bz2
-cd aspell5-id-1.2-0/
-./configure
-make
-sudo make install
+curl -Lo /tmp/aspell5-id.tar.bz2 https://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2
+tar -xf /tmp/aspell5-id.tar.bz2
+./tmp/aspell5-id-1.2-0/configure
+sudo make -C /tmp/aspell5-id-1.2-0/ install
 
 ## firefox
-cd /tmp
-wget -q https://download-installer.cdn.mozilla.net/pub/firefox/releases/92.0.1/linux-x86_64/en-US/firefox-92.0.1.tar.bz2
-tar -xf firefox-92.0.1.tar.bz2
-sudo mv firefox/ /opt/
+curl -Lo /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/92.0.1/linux-x86_64/en-US/firefox-92.0.1.tar.bz2
+tar -xf /tmp/firefox.tar.bz2
+sudo mv /tmp/firefox/ /opt/
 sudo chown -R $(whoami):$(whoami) /opt/firefox
 sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
 
 ## telegram
-cd /tmp
-wget -q https://updates.tdesktop.com/tlinux/tsetup.3.1.1.tar.xz
-tar -xf tsetup.3.1.1.tar.xz
-sudo mv Telegram/ /opt/
+curl -Lo /tmp/tsetup.tar.xz https://updates.tdesktop.com/tlinux/tsetup.3.1.1.tar.xz
+tar -xf /tmp/tsetup.tar.xz
+sudo mv /tmp/Telegram/ /opt/
 sudo chown -R $(whoami):$(whoami) /opt/Telegram
 sudo ln -s /opt/Telegram/Telegram /usr/local/bin/Telegram
 
 ## greenclip
-cd /tmp
-wget -q https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
-sudo mv greenclip /opt/
+curl -Lo /tmp/greenclip https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+sudo mv /tmp/greenclip /opt/
 sudo ln -s /opt/greenclip /usr/local/bin/greenclip
 
 ## pass-otp
-cd /tmp
-git clone https://github.com/tadfisher/pass-otp
-cd pass-otp/
-sudo make install
+git clone https://github.com/tadfisher/pass-otp /tmp/pass-otp
+sudo make -C /tmp/pass-otp install
 
 # wallpaper, sounds, fonts, and icons
 mkdir ~/sounds ~/wallpapers
-cd ~/wallpapers
-wget -q https://www.dropbox.com/s/o5gvczc3ymgg8vv/wallpapers.tar.gz?dl=0
-tar -xf wallpapers.tar.gz
-rm wallpapers.tar.gz
 
-cd ~/sounds
-wget -q https://www.dropbox.com/s/whao1ljkd26n3nw/sounds.tar.gz?dl=0
-tar -xf sounds.tar.gz
-rm sounds.tar.gz
+curl -Lo ~/wallpapers/wallpapers.tar.gz https://www.dropbox.com/s/o5gvczc3ymgg8vv/wallpapers.tar.gz?dl=0
+tar -xf ~/wallpapers/wallpapers.tar.gz
+rm ~/wallpapers/wallpapers.tar.gz
+
+curl -Lo ~/sounds/sounds.tar.gz https://www.dropbox.com/s/whao1ljkd26n3nw/sounds.tar.gz?dl=0
+tar -xf ~/sounds/sounds.tar.gz
+rm ~/sounds/sounds.tar.gz
 
 # fonts
-cd ~/.local/share/fonts/
-wget -q https://www.dropbox.com/s/jp7s95ihd48edar/fonts.tar.gz?dl=0
-tar -xf fonts.tar.gz
-rm fonts.tar.gz
+mkdir -p ~/.local/share/fonts
+curl -Lo ~/.local/share/fonts/fonts.tar.gz https://www.dropbox.com/s/jp7s95ihd48edar/fonts.tar.gz?dl=0
+tar -xf ~/.local/share/fonts/fonts.tar.gz
+rm ~/.local/share/fonts/fonts.tar.gz
 fc-cache -fv
 
 # icons
 mkdir ~/.icons
-cd ~/.icons
-wget -q https://www.dropbox.com/s/4wn1fczsx050gvl/.icons.tar.gz?dl=0
-tar -xf .icons.tar.gz
-rm .icons.tar.gz
+curl -Lo ~/.icons/.icons.tar.gz -q https://www.dropbox.com/s/4wn1fczsx050gvl/.icons.tar.gz?dl=0
+tar -xf ~/.icons/.icons.tar.gz
+rm ~/.icons/.icons.tar.gz
 
 # emacs
 sudo apt-get build-dep emacs
@@ -167,14 +151,10 @@ inn libgccjit-9-dev
 # setup dotfiles
 # create directory first, otherwise stow will create top directory as symlink
 # and apps will put uninteresting files under dotfiles directory
-cd ~
-mkdir .screenlayout
-cd ~/.config/
-mkdir compton dunst fish gtk-3.0 i3 i3status mpv wezterm
-cd ~
-git clone https://github.com/azzamsa/dotfiles
-cd dotfiles
-for d in */ ; do
+mkdir ~/.screenlayout
+cd ~/.config/ && mkdir compton dunst fish gtk-3.0 i3 i3status mpv wezterm
+git clone https://github.com/azzamsa/dotfiles ~/dotfiles/
+for d in ~/dotfiles/*/ ; do
     stow "$d"
 done
 
