@@ -189,6 +189,9 @@ HandleLidSwitch=ignore
 HandleLidSwitchDocked=ignore
 "  | sudo tee -a /etc/systemd/logind.conf
 
+# disable pc speaker
+echo "blacklist pcspkr" | sudo tee -a /etc/modprobe.d/nobeep.conf
+
 # touchpad
 # https://unix.stackexchange.com/a/337218
 sudo apt remove xserver-xorg-input-synaptics
