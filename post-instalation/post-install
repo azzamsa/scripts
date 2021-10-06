@@ -1,5 +1,19 @@
 #!/bin/bash
 
+wezterm_link="https://github.com/wez/wezterm/releases/download/20210814-124438-54e29167/WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage"
+activitywatch_link="https://github.com/ActivityWatch/activitywatch/releases/download/v0.11.0/activitywatch-v0.11.0-linux-x86_64.zip"
+nextcloud_link="https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86_64.AppImage"
+insomnia_link="https://github.com/Kong/insomnia/releases/download/core%402021.5.3/Insomnia.Core-2021.5.3.AppImage"
+aspell_link="https://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2"
+firefox_link="https://download-installer.cdn.mozilla.net/pub/firefox/releases/92.0.1/linux-x86_64/en-US/firefox-92.0.1.tar.bz2"
+telegram_link="https://updates.tdesktop.com/tlinux/tsetup.3.1.1.tar.xz"
+greenclip_link="https://github.com/erebe/greenclip/releases/download/v4.2/greenclip"
+
+wallpapers_link="https://www.dropbox.com/s/o5gvczc3ymgg8vv/wallpapers.tar.gz?dl=0"
+sounds_link="https://www.dropbox.com/s/whao1ljkd26n3nw/sounds.tar.gz?dl=0"
+fonts_link="https://www.dropbox.com/s/jp7s95ihd48edar/fonts.tar.gz?dl=0"
+icons_link="https://www.dropbox.com/s/4wn1fczsx050gvl/.icons.tar.gz?dl=0"
+
 # Add repository
 echo "deb http://ftp.au.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
 echo "deb-src http://ftp.au.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
@@ -60,55 +74,55 @@ sudo chown -R $(whoami):$(whoami) /opt/auto-suspend
 sudo ln -s /opt/auto-suspend/auto-suspend /usr/local/bin/auto-suspend
 
 # wezterm
-curl -Lo /tmp/wezterm https://github.com/wez/wezterm/releases/download/20210814-124438-54e29167/WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage
+curl -Lo /tmp/wezterm $wezterm_link
 chmod +x /tmp/wezterm
 sudo mv /tmp/wezterm /opt/wezterm
 sudo chown -R $(whoami):$(whoami) /opt/wezterm
 sudo ln -s /opt/wezterm /usr/local/bin/wezterm
 
 # aw-qt
-curl -Lo /tmp/activitywatch.zip https://github.com/ActivityWatch/activitywatch/releases/download/v0.11.0/activitywatch-v0.11.0-linux-x86_64.zip
+curl -Lo /tmp/activitywatch.zip $activitywatch_link
 unzip /tmp/activitywatch.zip
 sudo mv /tmp/activitywatch /opt/
 sudo chown -R $(whoami):$(whoami) /opt/activitywatch
 sudo ln -s /opt/activitywatch/aw-qt /usr/local/bin/aw-qt
 
 # nextcloud
-curl -Lo /tmp/nextcloud https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86_64.AppImage
+curl -Lo /tmp/nextcloud $nextcloud_link
 chmod +x /tmp/nextcloud
 sudo mv /tmp/nextcloud /opt/
 sudo chown -R $(whoami):$(whoami) /opt/nextcloud
 sudo ln -s /opt/nextcloud /usr/local/bin/nextcloud
 
 # insomnia
-curl -Lo /tmp/insomnia https://github.com/Kong/insomnia/releases/download/core%402021.5.3/Insomnia.Core-2021.5.3.AppImage
+curl -Lo /tmp/insomnia $insomnia_link
 chmod +x /tmp/insomnia
 mv /tmp/insomnia /opt/
 sudo chown -R $(whoami):$(whoami) /opt/insomnia
 sudo ln -s /opt/insomnia /usr/local/bin/insomnia
 
 # aspell
-curl -Lo /tmp/aspell5-id.tar.bz2 https://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2
+curl -Lo /tmp/aspell5-id.tar.bz2 $aspell_link
 tar -xf /tmp/aspell5-id.tar.bz2
 ./tmp/aspell5-id-1.2-0/configure
 sudo make -C /tmp/aspell5-id-1.2-0/ install
 
 ## firefox
-curl -Lo /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/92.0.1/linux-x86_64/en-US/firefox-92.0.1.tar.bz2
+curl -Lo /tmp/firefox.tar.bz2 $firefox_link
 tar -xf /tmp/firefox.tar.bz2
 sudo mv /tmp/firefox/ /opt/
 sudo chown -R $(whoami):$(whoami) /opt/firefox
 sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
 
 ## telegram
-curl -Lo /tmp/tsetup.tar.xz https://updates.tdesktop.com/tlinux/tsetup.3.1.1.tar.xz
+curl -Lo /tmp/tsetup.tar.xz $telegram_link
 tar -xf /tmp/tsetup.tar.xz
 sudo mv /tmp/Telegram/ /opt/
 sudo chown -R $(whoami):$(whoami) /opt/Telegram
 sudo ln -s /opt/Telegram/Telegram /usr/local/bin/Telegram
 
 ## greenclip
-curl -Lo /tmp/greenclip https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+curl -Lo /tmp/greenclip $greenclip_link
 sudo mv /tmp/greenclip /opt/
 sudo ln -s /opt/greenclip /usr/local/bin/greenclip
 
@@ -119,24 +133,24 @@ sudo make -C /tmp/pass-otp install
 # wallpaper, sounds, fonts, and icons
 mkdir ~/sounds ~/wallpapers
 
-curl -Lo ~/wallpapers/wallpapers.tar.gz https://www.dropbox.com/s/o5gvczc3ymgg8vv/wallpapers.tar.gz?dl=0
+curl -Lo ~/wallpapers/wallpapers.tar.gz $wallpapers_link
 tar -xf ~/wallpapers/wallpapers.tar.gz
 rm ~/wallpapers/wallpapers.tar.gz
 
-curl -Lo ~/sounds/sounds.tar.gz https://www.dropbox.com/s/whao1ljkd26n3nw/sounds.tar.gz?dl=0
+curl -Lo ~/sounds/sounds.tar.gz $sounds_link
 tar -xf ~/sounds/sounds.tar.gz
 rm ~/sounds/sounds.tar.gz
 
 # fonts
 mkdir -p ~/.local/share/fonts
-curl -Lo ~/.local/share/fonts/fonts.tar.gz https://www.dropbox.com/s/jp7s95ihd48edar/fonts.tar.gz?dl=0
+curl -Lo ~/.local/share/fonts/fonts.tar.gz $fonts_link
 tar -xf ~/.local/share/fonts/fonts.tar.gz
 rm ~/.local/share/fonts/fonts.tar.gz
 fc-cache -fv
 
 # icons
 mkdir ~/.icons
-curl -Lo ~/.icons/.icons.tar.gz -q https://www.dropbox.com/s/4wn1fczsx050gvl/.icons.tar.gz?dl=0
+curl -Lo ~/.icons/.icons.tar.gz $icons_link
 tar -xf ~/.icons/.icons.tar.gz
 rm ~/.icons/.icons.tar.gz
 
