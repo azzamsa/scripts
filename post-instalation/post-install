@@ -51,6 +51,9 @@ sudo apt-get install -y --no-install-recommends \
      maildir-utils isync aspell aspell-en \
      zoxide ripgrep arc-theme
 
+# fish
+chsh -s `which fish` # change default shell to fish
+
 # work
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -200,10 +203,6 @@ sudo echo 'Section "InputClass"
         Option "Tapping" "on"
 EndSection' > ~/40-libinput.conf
 sudo mv ~/40-libinput.conf /etc/X11/xorg.conf.d/
-
-# fish
-chsh -s `which fish` # change bash to fish
-vf install # virtual fish
 
 echo "Setup finished"
 cat <<- EOF
