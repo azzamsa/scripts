@@ -39,7 +39,6 @@ sudo apt-get install -y --no-install-recommends \
      fish fuse git etckeeper gnupg2 ssh ssh-agent curl stow rsync \
      keychain
 
-
 echo "exec i3" | tee -a ~/.xinitrc
 
 # utilities
@@ -168,6 +167,13 @@ mkdir ~/.icons
 curl -Lo ~/.icons/.icons.tar.gz $icons_link
 tar -xf ~/.icons/.icons.tar.gz
 rm ~/.icons/.icons.tar.gz
+
+# global icons
+sudo mkdir -p /usr/share/icons/apps/
+sudo chown -R $USER:$USER /usr/share/icons/apps
+curl -Lo /usr/share/icons/apps/icons.tar.gz $icon_apps_link
+tar -xf /usr/share/icons/apps/icons.tar.gz
+rm /usr/share/icons/apps/icons.tar.gz
 
 # emacs
 sudo apt-get build-dep emacs
