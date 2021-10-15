@@ -62,6 +62,13 @@ sudo apt-get install -y --no-install-recommends \
 
 cargo install starship vivid fnm
 
+pip3 install black flake8 --user
+pip3 install python-language-server pyls-black --user
+
+python3 -m pip install virtualfish
+vf install
+vf new -p /usr/bin/python3 global3
+
 # setting up `ssh-agent` in fish shell is nightmare
 # I can use plain `eval (ssh-agent -c)` or `systemd --user`
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
