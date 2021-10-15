@@ -13,6 +13,11 @@ wallpapers_link="https://www.dropbox.com/s/o5gvczc3ymgg8vv/wallpapers.tar.gz?dl=
 sounds_link="https://www.dropbox.com/s/whao1ljkd26n3nw/sounds.tar.gz?dl=0"
 fonts_link="https://www.dropbox.com/s/jp7s95ihd48edar/fonts.tar.gz?dl=0"
 icons_link="https://www.dropbox.com/s/4wn1fczsx050gvl/.icons.tar.gz?dl=0"
+$icon_apps_link="https://www.dropbox.com/s/l7q1uhgempo7g6a/icon-apps.zip?dl=0"
+
+firefox_desktop="https://www.dropbox.com/s/207r2bstxf82on1/firefox.desktop?dl=0"
+insomnia_desktop="https://www.dropbox.com/s/em9frkyxoq91ffb/insomnia.desktop?dl=0"
+wezterm_desktop="https://www.dropbox.com/s/x1vbw950h87ojla/wezterm.desktop?dl=0"
 
 # Add repository
 echo "deb http://ftp.au.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
@@ -195,6 +200,12 @@ HandleLidSwitchDocked=ignore
 
 # disable pc speaker
 echo "blacklist pcspkr" | sudo tee -a /etc/modprobe.d/nobeep.conf
+
+# .desktop files
+mkdir -p ~/.local/share/applications
+curl -Lo ~/.local/share/applications/firefox.desktop $firefox_desktop
+curl -Lo ~/.local/share/applications/insomnia.desktop $insomnia_desktop
+curl -Lo ~/.local/share/applications/wezterm.desktop $wezterm_desktop
 
 # touchpad
 # https://unix.stackexchange.com/a/337218
