@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-cd /var/www/html/chillnsound/app/sounds 
-(mpv beach.mp3 --loop-file &);mpv birds.mp3 --loop-file
