@@ -44,6 +44,7 @@ echo "exec i3" | tee -a ~/.xinitrc
 # utilities
 # xclip required by pass to copy to clipboard
 # gvfs-fuse gvfs-backends adds support for sftp in thunar
+# mu4e needs w3m
 sudo apt-get install -y --no-install-recommends \
      i3 i3lock rofi light dunst unclutter \
      pass light xclip network-manager-gnome \
@@ -52,7 +53,7 @@ sudo apt-get install -y --no-install-recommends \
      htop tar zip unzip unar unrar-free ncdu mat borgbackup gparted arandr \
      mpv gimp inkscape libreoffice libreoffice-gtk3 audacity \
      okular okular-extra-backends evince system-config-printer \
-     maildir-utils isync aspell aspell-en \
+     maildir-utils isync w3m aspell aspell-en \
      zoxide ripgrep arc-theme
 
 # fish
