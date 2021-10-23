@@ -214,21 +214,6 @@ curl -Lo ~/.local/share/applications/firefox.desktop $firefox_desktop
 curl -Lo ~/.local/share/applications/insomnia.desktop $insomnia_desktop
 curl -Lo ~/.local/share/applications/wezterm.desktop $wezterm_desktop
 
-# touchpad
-# https://unix.stackexchange.com/a/337218
-sudo apt remove xserver-xorg-input-synaptics
-sudo apt install xserver-xorg-input-libinput
-sudo mkdir -p /etc/X11/xorg.conf.d/
-
-sudo echo 'Section "InputClass"
-        Identifier "libinput touchpad catchall"
-        MatchIsTouchpad "on"
-        MatchDevicePath "/dev/input/event*"
-        Driver "libinput"
-        Option "Tapping" "on"
-EndSection' > ~/40-libinput.conf
-sudo mv ~/40-libinput.conf /etc/X11/xorg.conf.d/
-
 echo "Setup finished"
 cat <<- EOF
 Your next TODO:
