@@ -19,6 +19,8 @@ firefox_desktop="https://www.dropbox.com/s/207r2bstxf82on1/firefox.desktop?dl=0"
 insomnia_desktop="https://www.dropbox.com/s/em9frkyxoq91ffb/insomnia.desktop?dl=0"
 wezterm_desktop="https://www.dropbox.com/s/x1vbw950h87ojla/wezterm.desktop?dl=0"
 
+node_version="v16.12"
+
 # Add repository
 echo "deb http://ftp.au.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
 echo "deb-src http://ftp.au.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
@@ -66,9 +68,11 @@ sudo apt-get install -y --no-install-recommends \
      python3 python3-dev python3-venv python3-pip python3-setuptools
 
 cargo install starship vivid fnm
+fnm use $node_version
 
-pip3 install black flake8 --user
-pip3 install python-language-server pyls-black --user
+# `grip` is handy tool to render md file locally
+pip3 install --user black flake8 flake8-isort grip
+pip3 install --user python-language-server pyls-black
 
 python3 -m pip install virtualfish
 vf install
