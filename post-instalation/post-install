@@ -58,6 +58,12 @@ sudo apt-get install -y --no-install-recommends \
      maildir-utils isync w3m aspell aspell-en \
      zoxide ripgrep arc-theme
 
+# keyboards
+python3 -m pip install --user qmk
+sudo apt-get install -y --no-install-recommends libhidapi-dev
+# qmk setup -H /media/$USER/exts1/source/qmk_firmware
+# qmk config user.keyboard=sofle/rev1 user.keymap=$USER user.name=$USER
+
 # fish
 chsh -s `which fish` # change default shell to fish
 
