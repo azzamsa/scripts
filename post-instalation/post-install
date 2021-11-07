@@ -50,13 +50,19 @@ echo "exec i3" | tee -a ~/.xinitrc
 sudo apt-get install -y --no-install-recommends \
      i3 i3lock rofi light dunst unclutter \
      pass light xclip network-manager-gnome \
-     flameshot feh ristretto file-roller mousepad workrave \
+     flameshot feh ristretto peek file-roller mousepad workrave \
      thunar thunar-archive-plugin gvfs-fuse gvfs-backends \
      htop tar zip unzip unar unrar-free ncdu mat borgbackup gparted arandr \
      mpv gimp inkscape libreoffice libreoffice-gtk3 audacity \
      okular okular-extra-backends evince system-config-printer \
      maildir-utils isync w3m aspell aspell-en \
      zoxide ripgrep arc-theme
+
+# additional packages
+sudo apt-get install -y --no-install-recommends \
+     docker.io docker-compose
+sudo usermod -aG docker $USER
+su - $USER
 
 # keyboards
 python3 -m pip install --user qmk
