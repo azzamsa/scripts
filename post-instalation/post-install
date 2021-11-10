@@ -52,7 +52,7 @@ sudo apt-get install -y --no-install-recommends \
      pass light xclip network-manager-gnome \
      flameshot feh ristretto peek file-roller mousepad workrave \
      thunar thunar-archive-plugin gvfs-fuse gvfs-backends \
-     htop tar zip unzip unar unrar-free ncdu mat borgbackup gparted arandr \
+     htop tar zip unzip unar unrar-free ncdu mat2 borgbackup gparted arandr \
      mpv gimp inkscape libreoffice libreoffice-gtk3 audacity \
      okular okular-extra-backends evince system-config-printer \
      maildir-utils isync w3m aspell aspell-en \
