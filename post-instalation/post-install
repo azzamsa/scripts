@@ -82,9 +82,19 @@ sudo apt-get install -y --no-install-recommends \
 cargo install starship vivid fnm
 fnm use $node_version
 
+# rust
+# cargo install cargo-make
+
+# python
+# these app need to be installed inside the project's venv
+# pip3 install python-language-server pyls-black pyls-isort pyls-mypy
+
+# set default python to python3
+# in Debian, it points to python2
+update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+
 # `grip` is handy tool to render md file locally
 pip3 install --user black flake8 flake8-isort grip
-pip3 install --user python-language-server pyls-black
 
 python3 -m pip install virtualfish
 vf install
