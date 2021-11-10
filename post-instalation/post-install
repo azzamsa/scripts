@@ -89,10 +89,6 @@ fnm use $node_version
 # these app need to be installed inside the project's venv
 # pip3 install python-language-server pyls-black pyls-isort pyls-mypy
 
-# set default python to python3
-# in Debian, it points to python2
-update-alternatives --install /usr/bin/python python /usr/bin/python3 10
-
 # `grip` is handy tool to render md file locally
 pip3 install --user black flake8 flake8-isort grip
 
@@ -239,6 +235,10 @@ mkdir -p ~/.local/share/applications
 curl -Lo ~/.local/share/applications/firefox.desktop $firefox_desktop
 curl -Lo ~/.local/share/applications/insomnia.desktop $insomnia_desktop
 curl -Lo ~/.local/share/applications/wezterm.desktop $wezterm_desktop
+
+# set default python to python3
+# in Debian, it points to python2
+update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
 echo "Setup finished"
 cat <<- EOF
