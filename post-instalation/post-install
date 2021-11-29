@@ -79,8 +79,11 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo apt-get install -y --no-install-recommends \
      python3 python3-dev python3-venv python3-pip python3-setuptools
 
-cargo install starship vivid fnm
+cargo install vivid fnm
 fnm use $node_version
+
+# starship
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 # rust
 # cargo install cargo-make
