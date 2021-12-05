@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wezterm_link="https://github.com/wez/wezterm/releases/download/20210814-124438-54e29167/WezTerm-20210814-124438-54e29167-Ubuntu16.04.AppImage"
+wezterm_link="https://github.com/wez/wezterm/releases/download/20211204-082213-a66c61ee9/wezterm-20211204-082213-a66c61ee.Debian11.deb"
 activitywatch_link="https://github.com/ActivityWatch/activitywatch/releases/download/v0.11.0/activitywatch-v0.11.0-linux-x86_64.zip"
 nextcloud_link="https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86_64.AppImage"
 insomnia_link="https://github.com/Kong/insomnia/releases/download/core%402021.5.3/Insomnia.Core-2021.5.3.AppImage"
@@ -115,10 +115,7 @@ sudo ln -s /opt/auto-suspend/auto-suspend /usr/local/bin/auto-suspend
 
 # wezterm
 curl -Lo /tmp/wezterm $wezterm_link
-chmod +x /tmp/wezterm
-sudo mv /tmp/wezterm /opt/wezterm
-sudo chown -R $(whoami):$(whoami) /opt/wezterm
-sudo ln -s /opt/wezterm /usr/local/bin/wezterm
+sudo dpkg -i /tmp/wezterm
 
 # aw-qt
 curl -Lo /tmp/activitywatch.zip $activitywatch_link
