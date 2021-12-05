@@ -160,6 +160,7 @@ sudo ln -s /opt/Telegram/Telegram /usr/local/bin/Telegram
 
 ## greenclip
 curl -Lo /tmp/greenclip $greenclip_link
+chmod +x /tmp/greenclip
 sudo mv /tmp/greenclip /opt/
 sudo ln -s /opt/greenclip /usr/local/bin/greenclip
 
